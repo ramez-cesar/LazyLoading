@@ -1,3 +1,6 @@
+import { lazyLoading } from "./lazy.js"
+
+
 const btnAddImage = document.querySelector('#add_image')
 const btnRemoveImage = document.querySelector('#remove_image')
 const imagesContainer = document.querySelector('.images-container')
@@ -23,9 +26,11 @@ function addImage(id) {
     const image = document.createElement('img')
     const figure = document.createElement('figure')
 
-    image.setAttribute('src', `https://randomfox.ca/images/${id}.jpg`)
+    image.setAttribute('data-src', `https://randomfox.ca/images/${id}.jpg`)
 
     div.append(figure)
     figure.append(image)
     imagesContainer.append(div)
+
+    lazyLoading.observe(image)
 }
